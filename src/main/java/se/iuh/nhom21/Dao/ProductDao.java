@@ -54,7 +54,6 @@ public class ProductDao {
 	public Product getProductById(int id) {
 		String sql = "select * from SanPham where masp = "+id+" ";
 		List<Product> listproduct = template.query(sql, new RowMapper<Product>() {
-			
 			public Product mapRow(ResultSet rs, int row ) throws SQLException{
 				Product product = new Product();
 				product.setMasp(rs.getInt(1));
@@ -74,6 +73,23 @@ public class ProductDao {
 
 	public List<Product> getProducts() {
 		return template.query("select * from SanPham", new RowMapper<Product>() {
+			public Product mapRow(ResultSet rs, int row) throws SQLException {
+				Product product = new Product();
+				product.setMasp(rs.getInt(1));
+				product.setTensp(rs.getString(2));
+				product.setDongia(rs.getFloat(3));
+				product.setAnhsp(rs.getString(4));
+				product.setMota(rs.getString(5));
+				product.setMaloai(rs.getInt(6));
+				product.setTrangthai(rs.getString(7));
+				return product;
+			}
+
+		});
+	}
+
+	public List<Product> getProductsbyMaloai(String maloai) {
+		return template.query("select * from SanPham where spMaLoai = " + maloai, new RowMapper<Product>() {
 
 			public Product mapRow(ResultSet rs, int row) throws SQLException {
 				Product product = new Product();
@@ -91,4 +107,5 @@ public class ProductDao {
 		});
 	}
 
+	
 }

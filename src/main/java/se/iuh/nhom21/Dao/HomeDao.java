@@ -30,18 +30,9 @@ public class HomeDao {
 		this.template = template;
 	}
 	
-	public int register(Account account) {
-		AccountDao accountDao = new AccountDao();
-		UserDao userDao = new UserDao();
-		if(userDao.saveAddAcc(account.getSdt())==1) {
-			return accountDao.save(account);
-		}
-			return -5;
-	}	
 	public Account login(String sdt,String matkhau) {
 		String sql = "select * from TaiKhoan where sSDT = '"+sdt+"' and sMatkhau='"+matkhau+"'";
 		List<Account> list = template.query(sql, new RowMapper<Account>() {
-			
 			public Account mapRow(ResultSet rs, int row ) throws SQLException{
 			Account account  = new Account();
 			account.setSdt(rs.getString(1));
@@ -49,7 +40,6 @@ public class HomeDao {
 			account.setQuyen(rs.getInt(3));
 			return account;
 			}
-
 		});
 		if(list.size()>0) {
 			Account accountResult = list.get(0);

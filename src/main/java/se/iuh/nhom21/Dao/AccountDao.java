@@ -31,9 +31,7 @@ public class AccountDao {
 	
 	public int save(Account account) {
 		String sql ="insert into TaiKhoan(sSDT,sMatkhau,iMaquyen) "
-				+ " values( ' "  
-				+ account.getSdt()+" ', ' "
-				+ account.getMatkhau()+"',2)";
+				+ " values( '"+account.getSdt()+"','"+account.getMatkhau()+"',2)";
 		System.out.println(account.toString());
 		return template.update(sql);
 	}	
@@ -45,7 +43,6 @@ public class AccountDao {
 	
 	public List<Account> getAccounts(){
 		return template.query("select * from TaiKhoan", new RowMapper<Account>() {
-			
 			public Account mapRow(ResultSet rs, int row ) throws SQLException{
 			Account Account = new Account();
 			Account.setSdt(rs.getString(1));
@@ -53,7 +50,6 @@ public class AccountDao {
 			Account.setQuyen(rs.getInt(3));
 				return Account;
 			}
-
 		});
 	}
 

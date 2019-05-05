@@ -14,6 +14,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import se.iuh.nhom21.Model.Account;
+import se.iuh.nhom21.Model.Product;
 import se.iuh.nhom21.Model.Type;
 import se.iuh.nhom21.Model.User;
 
@@ -31,11 +32,11 @@ public class UserDao {
 		this.template = template;
 	}
 	
-	
+	// tao khach hang truoc khi tao tai khoan
 	public int saveAddAcc(String sdt) {
 		int kq=-5;
 		try {
-			String sql ="insert into KhachHang ( tenkh,sSDT ) values('lam','06789' )";
+			String sql ="insert into KhachHang (sSDT) values('"+sdt+"' )";
 			 kq=template.update(sql);
 		}
 		catch(Exception exception) {
@@ -44,6 +45,16 @@ public class UserDao {
 		return kq;
 	}	
 	
+	// cap nhat khachang sau khi dang ki
+	public int update(User user) {
+		String sql ="update KhachHang set tenkh= N'"
+				+ user.getTen()+"',sDiachi=N'"
+				+user.getDiachi()+"',sEmail=N'"+user.getEmail()+"',Gioitinh=N'"
+				+user.getGioitinh()+"' where iMakh = "+ user.getMa();
+		System.out.println(user.toString());
+		return template.update(sql);
+	}
+	
 	public int delete(int id) {
 		String sql = "delete from KhachHang where id = "+id+" ";
 		return template.update(sql);
@@ -51,7 +62,6 @@ public class UserDao {
 	
 	public List<User> getUsers(){
 		return template.query("select * from KhachHang", new RowMapper<User>() {
-			
 			public User mapRow(ResultSet rs, int row ) throws SQLException{
 			User user = new User();
 			user.setMa(rs.getInt(1));
@@ -71,10 +81,7 @@ public class UserDao {
 	
 	public User getTypeBySdt(String sdt) {
 		String sql = "select * from KhachHang where sSDT = "+sdt+" ";
-//		Type type = template.queryForObject(sql, new Object[] { id }, 
-//				new BeanPropertyRowMapper<Type>(Type.class));
 		List<User> list = template.query(sql, new RowMapper<User>() {
-			
 			public User mapRow(ResultSet rs, int row ) throws SQLException{
 				User user = new User();
 				user.setMa(rs.getInt(1));

@@ -18,23 +18,28 @@
 				<li class="nav-item active"><a class="nav-link"
 					href="/nhom21/search">Tìm kiếm <span class="sr-only">(current)</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link" href="/nhom21/types">Loại</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="/nhom21/users">Thành
-						viên</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="/nhom21/accounts">Tài khoản</a></li>
-				<%-- <c:if test="empty sdt"> --%>
+				<c:if test="${ empty sdt}">
 					<li class="nav-item"><a class="nav-link" href="/nhom21/login">Đăng
 							nhập</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="/nhom21/register">Đăng kí</a></li>
-				<%-- </c:if> --%>
+				</c:if>
+				<c:if test="${ sdt!=null }">
+					<li class="nav-item"><a class="nav-link" href="/nhom21/user/${sdt}">Hello
+							${sdt}</a></li>
+					<li class="nav-item"><a class="nav-link" href="/nhom21/logout">Logout</a>
+					</li>
+					<c:if test="${ quyen == 1 }">
+						<li class="nav-item"><a class="nav-link"
+							href="/nhom21/accounts">Tài khoản</a></li>
+						<li class="nav-item"><a class="nav-link" href="/nhom21/types">Loại</a>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="/nhom21/users">Thành
+								viên</a></li>
+					</c:if>
+				</c:if>
 			</ul>
 		</div>
 	</div>
 </nav>
-<%-- <c:if test="${not empty msg}">
-	<script>alert("${msg}");
-</script> 
-</c:if> --%>
+

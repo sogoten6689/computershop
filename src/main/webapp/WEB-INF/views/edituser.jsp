@@ -11,29 +11,32 @@
 	<!-- end header -->
 	<div class="container">
 		<h1>Thông tin thành viên</h1>
-		<form:form >
-	
+		<form:form method="post" action="/nhom21/editsaveuser">
+			<div class="form-group">
+				 <form:hidden class="form-control" path="ma" />
+			</div>
 			<div class="form-group">
 				<label for="tenLoai">Tên người dùng</label>
-				 <form:input disabled="true" class="form-control" path="ten" />
+				 <form:input class="form-control" path="ten" />
 			</div>
 			<div class="form-group">
 				<label for="thongTinLoai">Số điện thoại</label>
-				 <form:input disabled="true"  class="form-control" path="sdt" />
+				 <form:input disabled="true" class="form-control" path="sdt" />
 			</div>
 			<div class="form-group">
 				<label for="thongTinLoai">Địa chỉ</label>
-				 <form:input disabled="true"  class="form-control" path="diachi" />
+				 <form:input class="form-control" path="diachi" />
 			</div>
 			<div class="form-group">
-				<label for="thongTinLoai">Email</label>
-				 <form:input disabled="true"  class="form-control" path="email" />
+				<label for="email">Email</label>
+				 <form:input class="form-control" path="email" />
 			</div>
 			<div class="form-group">
-				<label for="thongTinLoai">Giới tính</label>
-				 <form:input disabled="true"  class="form-control" path="gioitinh" />
+				<label for="giotinh">Giới tính</label>
+				 <form:input class="form-control" path="gioitinh" />
 			</div>
-			<a href="/nhom21/accounts" class="btn btn-primary">Thoát</a>
+			<input type="submit" class="btn btn-primary" value="Save"/>
+			<a href="/nhom21/" class="btn btn-danger">Thoát</a>
 		</form:form>
 	</div>
 
