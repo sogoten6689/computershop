@@ -1,0 +1,60 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ page session="true"%>
+<html>
+<head>
+	<title>Đăng kí</title>
+	<jsp:include page="./parts/add_head.jsp" />
+  <link href="/nhom21/resources/theme1/css/login.css" rel="stylesheet">
+</head>
+<body>
+	<!-- header -->
+	<jsp:include page="./parts/header.jsp"/>
+	<br/><br/><br/><br/><br/><br/><br/><br/>
+	<!-- end header -->
+		<div class="container">
+		<div class="d-flex justify-content-center">
+			<div class="user_card">
+				<div class="d-flex justify-content-center">
+					<div class="brand_logo_container">
+						<img src="/nhom21/resources/theme1/img/favicon.png" class="brand_logo" alt="Logo">
+					</div>
+				</div>
+				<div class="d-flex justify-content-center form_container">
+					<form:form  method="post" action="registerpost">
+						<div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							<form:input type="text"  class="form-control input_user" path="sdt" placeholder="username"/>
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+							<form:password  class="form-control input_pass" path="matkhau" placeholder="password"/>
+						</div>
+						
+						
+				<div class="d-flex justify-content-center mt-3 login_container">
+					<input type="submit" class="btn btn-primary" value="Register"/>
+				</div>
+					</form:form>
+				</div>
+				<div class="mt-4">
+					<div class="d-flex justify-content-center links">
+						Have you an account? <a href="/nhom21/login" class="ml-2">Sign In</a>
+					</div>
+					<div class="d-flex justify-content-center links">
+						<a href="#">Forgot your password?</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- footer -->
+	<jsp:include page="./parts/footer.jsp" />
+	<!-- end footer -->
+</body>
+</html>
