@@ -11,38 +11,42 @@
 	<!-- end header -->
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-6 text-left"><h3>Danh sách sản phẩm 
-				
-			</h3></div>
+			<div class="col-sm-6 text-left"><h3>Danh sách sản phẩm</h3></div>
 			<div class="col-sm-6 text-right">
 				<a href="/nhom21/addproduct" class="btn btn-primary">Thêm sản phẩm mới</a>
 			</div>
 		</div>
-			<div class="row">
-				<c:forEach var="product" items="${list}">
-				<div class="col-sm-3">
-					<h3>${product.tensp}</h3>
-					<img alt="" src="/nhom21/resources/theme1/img/sanpham/1.jpg">
-					<div>${product.dongia}</div>
-					<div>${product.anhsp}</div>
-					<div>${product.mota}</div>
-					<div>
+		<table class="table table-striped text-center">
+			<tr>
+				<th>Tên </th>
+				<th>Giá</th>
+				<th>Ảnh</th>
+				<th>Mô tả</th>
+				<th>Loại</th>
+				<th>Trạng thái</th>
+				<th>Thao tác</th>
+			</tr>
+			<c:forEach var="product" items="${list}">
+				<tr class="success">
+					<td>${product.tensp}</td>
+					<td>${product.dongia}</td>
+					<td>${product.anhsp}</td>
+					<td>${product.mota}</td>
+					<td>
 							<c:forEach var="type" items="${listtype}">
 								<c:if test="${product.maloai==type.maLoai }">
 								<c:out value="${type.tenLoai}"></c:out>
 								</c:if>
 							</c:forEach>
-					</div>
-					<div>${product.trangthai}</div>
-					<div>
-						<a class="btn btn-primary" href="/nhom21/addcart/${product.masp}">Thêm vào giỏ</a>
-					</div>
-				</div>
-					
+					</td>
+					<td>${product.trangthai}</td>
+					<td>
+						<a class="btn btn-primary" href="deleteproduct/${product.masp}">Xóa</a>
+						<a class="btn btn-primary" href="editproduct/${product.masp}">Sửa</a>
+					</td>
+				</tr>
 			</c:forEach>
-				</div>
-			
-	
+		</table>
 	</div>
 
 	<!-- footer -->

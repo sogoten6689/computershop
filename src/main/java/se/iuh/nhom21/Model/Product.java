@@ -3,6 +3,8 @@
  */
 package se.iuh.nhom21.Model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 /**
  * @author LamNguyen
  *
@@ -15,6 +17,15 @@ public class Product {
 	private String mota;
 	private int maloai;
 	private String trangthai;
+	
+	private MultipartFile file;
+	
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
 	public int getMasp() {
 		return masp;
 	}

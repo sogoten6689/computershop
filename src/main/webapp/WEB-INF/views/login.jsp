@@ -11,7 +11,7 @@
 <body>
 	<!-- header -->
 	<jsp:include page="./parts/header.jsp"/>
-	<br/><br/><br/><br/><br/><br/><br/><br/>
+	<br/><br/><br/><br/><br/>
 	<!-- end header -->
 		<div class="container">
 		<div class="d-flex justify-content-center">

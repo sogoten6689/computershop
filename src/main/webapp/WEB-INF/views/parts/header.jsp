@@ -8,16 +8,29 @@
 			src="/nhom21/resources/theme1/img/favicon.png" style="height: 40px;" />&nbsp;&nbsp;
 			Computer Shop
 		</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarResponsive" aria-controls="navbarResponsive"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
+		<div>
+			<input type="text">
+			<button>Tìm kiếm</button>
+		</div>		
+		
+		<div class="dropdown">
+			<button class="btn dropdown-toggle" type="button"
+				data-toggle="dropdown" style="color:white;box-shadow: none;">
+				Loại sản phẩm<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<c:forEach items="${listtype}" var="type">
+					<li><a href="/nhom21/products/${type.maLoai}">${type.tenLoai}</a></li>
+				 </c:forEach>
+			</ul>
+		</div>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item active"><a class="nav-link"
-					href="/nhom21/search">Tìm kiếm <span class="sr-only">(current)</span>
-				</a></li>
+				<c:if test="${ not empty listcart}">
+					<li class="nav-item">
+					<a class="btn" href="#" style="font-size:20px;color:white;" >Giỏ<i class="fa fa-shopping-cart" style="font-size:20px;color:white;"> ${listcart.size()} </i></a>
+				</li>
+				</c:if>
 				<c:if test="${ empty sdt}">
 					<li class="nav-item"><a class="nav-link" href="/nhom21/login">Đăng
 							nhập</a></li>
@@ -29,17 +42,14 @@
 							${sdt}</a></li>
 					<li class="nav-item"><a class="nav-link" href="/nhom21/logout">Logout</a>
 					</li>
-					<c:if test="${ quyen == 1 }">
-						<li class="nav-item"><a class="nav-link"
-							href="/nhom21/accounts">Tài khoản</a></li>
-						<li class="nav-item"><a class="nav-link" href="/nhom21/types">Loại</a>
-						</li>
-						<li class="nav-item"><a class="nav-link" href="/nhom21/users">Thành
-								viên</a></li>
-					</c:if>
+					
 				</c:if>
 			</ul>
 		</div>
 	</div>
 </nav>
+	<c:if test="${quyen != null && quyen==1 }">
+		<jsp:include page="adminheader.jsp"/>
+	</c:if>
+	<br/>
 

@@ -1,7 +1,9 @@
 package se.iuh.nhom21.Controller;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,15 +13,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import se.iuh.nhom21.Dao.AccountDao;
 import se.iuh.nhom21.Dao.HomeDao;
+import se.iuh.nhom21.Dao.ProductDao;
 import se.iuh.nhom21.Dao.TypeDao;
 import se.iuh.nhom21.Dao.UserDao;
 import se.iuh.nhom21.Model.Account;
+import se.iuh.nhom21.Model.Cart;
+import se.iuh.nhom21.Model.Product;
 import se.iuh.nhom21.Model.Type;
 import se.iuh.nhom21.Model.User;
 
@@ -37,12 +43,20 @@ public class HomeController {
 	@Autowired
 	AccountDao accountDao;
 
+	@Autowired
+	TypeDao typeDao;
+	
+	@Autowired
+	ProductDao productDao;
+	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		return "home";
+	public ModelAndView home(HttpSession session) {
+		List<Type> listtype = typeDao.getTypes();
+		session.setAttribute("listtype", listtype);
+		return new ModelAndView("home");
 	}
 
 	// error
@@ -50,6 +64,21 @@ public class HomeController {
 	public ModelAndView error() {
 		return new ModelAndView("error");
 	}
+	
+	// error
+		@RequestMapping(value = "/addcart/{masp}", method = RequestMethod.GET)
+		public ModelAndView addproducttocart(@PathVariable int masp, HttpSession session) {
+			@SuppressWarnings("unchecked")
+			List<Cart> listcart = (List<Cart>) session.getAttribute("listcart");
+			if(listcart==null) {
+				listcart = new ArrayList<Cart>();
+			}
+			Product product = productDao.getProductById(masp);
+			Cart cart = new Cart(product);
+			listcart.add(cart);
+			session.setAttribute("listcart",listcart);
+			return new ModelAndView("redirect:/products");
+		}
 
 	// giao dien login
 	@RequestMapping("/login")

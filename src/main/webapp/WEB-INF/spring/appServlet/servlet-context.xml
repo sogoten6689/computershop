@@ -59,6 +59,9 @@
 	<beans:bean id="daoProduct" class="se.iuh.nhom21.Dao.ProductDao">
 		<beans:property name="template" ref="jt"></beans:property>
 	</beans:bean>
+	<beans:bean id="daoOrder" class="se.iuh.nhom21.Dao.OrderDao">
+		<beans:property name="template" ref="jt"></beans:property>
+	</beans:bean>
 
 
 </beans:beans>

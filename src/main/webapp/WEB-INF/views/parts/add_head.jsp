@@ -7,4 +7,7 @@
 
   <!-- Custom styles for this template -->
   <link href="/nhom21/resources/theme1/css/shop-homepage.css" rel="stylesheet">
-  
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="/nhom21/resources/theme1/vendor/jquery/jquery.min.js"></script>
+  <script src="/nhom21/resources/theme1/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
