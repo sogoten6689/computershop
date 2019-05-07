@@ -30,14 +30,14 @@ public class OrderDao {
 	}
 	
 	public int save(Order order) {
-		String sql = "insert into Order(sSDT, sPtthanhtoan, sDiachiNhanhang) values('" + order.getsSDT() + "',N'"
+		String sql = "insert into DonHang(sSDT, sPtthanhtoan, sDiachiNhanhang) values('" + order.getsSDT() + "',N'"
 				+ order.getsPtthanhtoan() + "',N'" + order.getsDiachiNhanhang() + "')";
 		System.out.println(sql);
 		return template.update(sql);
 	}
 
 	public int saveDetail(OrderDetail orderDetail) {
-		String sql = "insert into Chitietdonhang(iMadonhang, Masp,sSoluongct,sDongiact) values("
+		String sql = "insert into Chitietdonhang(iMadonhang, Masp,soluongct,sDongiact) values("
 				+ orderDetail.getImadonhang() + "," + orderDetail.getMasp() + "," + orderDetail.getSoluongct() + ","
 				+ orderDetail.getDongiact() + ")";
 		System.out.println(sql);
@@ -45,8 +45,8 @@ public class OrderDao {
 	}
 	
 	//Lay chi tiet don hang
-		public List<OrderDetail>getAllChitietByMadonhang(int imadonhang){
-			String sql="select distinct ct.iMadonhang, sTensp, sSoluongct, sDongiact, sSoluongct * sDongiact from Chitietdonhang ct join Order dh on ct.iMadonhang = dh.iMadonhang join Sanpham sp on sp.Masp = ct.Masp where ct.iMadonhang=? group by ct.iMadonhang, sTensp, sSoluongct, sDongiact";
+		public List<OrderDetail>getAllChitietByMadonhang(String imadonhang){
+			String sql="select distinct ct.iMadonhang, sTensp, soluongct, sDongiact, soluongct * sDongiact from Chitietdonhang ct join Donhang dh on ct.iMadonhang = dh.iMadonhang join Sanpham sp on sp.Masp = ct.Masp where dh.sSDT=? group by ct.iMadonhang, sTensp, soluongct, sDongiact";
 			return template.query(sql, new Object[] {imadonhang}, new RowMapper<OrderDetail>() {
 
 				@Override
@@ -56,8 +56,8 @@ public class OrderDao {
 					ct.setImadonhang(rs.getInt(1));
 					ct.setTensp_sp(rs.getString(2));
 					ct.setSoluongct(rs.getInt(3));
-					ct.setDongiact(rs.getBigDecimal(4));
-					ct.setCongtien(rs.getBigDecimal(5));
+					ct.setDongiact(rs.getFloat(4));
+					ct.setCongtien(rs.getFloat(5));
 
 					return ct;
 				}
@@ -65,5 +65,12 @@ public class OrderDao {
 			});
 		
 		}
-
+		
+		public int findDonhangById(String sSDT) {
+			String sql = "select top 1 imadonhang from donhang where sSDT=? order by dtNgaydathang desc";
+			int ma = template.queryForObject(sql, Integer.class, sSDT);
+			return ma;
+		}
+		
+		
 }

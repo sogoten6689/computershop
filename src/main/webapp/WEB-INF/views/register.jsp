@@ -11,9 +11,15 @@
 <body>
 	<!-- header -->
 	<jsp:include page="./parts/header.jsp"/>
-	<br/><br/><br/><br/><br/><br/><br/><br/>
+	<br/><br/><br/><br/>
 	<!-- end header -->
 		<div class="container">
+		
+		<c:if test="${not empty msg}">
+			<div class="alert alert-danger">
+  				<strong>Danger!</strong> ${msg }
+			</div>
+		</c:if>
 		<div class="d-flex justify-content-center">
 			<div class="user_card">
 				<div class="d-flex justify-content-center">

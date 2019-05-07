@@ -19,7 +19,7 @@
 				<a href="/nhom21/products" class="btn btn-danger">Hủy</a>
 			</div>
 		</div>
-		<form:form method="post" action="saveproduct" enctype="multipart/form-data">
+		<form:form method="post" action="saveproduct">
 			<div class="form-group">
 				<label for="tensp">Tên sản phẩm:</label>
 				<form:input class="form-control" path="tensp" />
@@ -28,10 +28,10 @@
 				<label for="thongTinLoai">Giá sản phẩm</label>
 				<form:input class="form-control" path="dongia" />
 			</div>
-			<div class="form-group">
+		<%-- 	<div class="form-group">
 				<label for="thongTinLoai">Ảnh sản phẩm</label>
-				<form:input  type="file" class="form-control" name="file" path="file" />
-			</div>
+				<form:input  type="file" class="form-control" name="anhsp" path="sAnhsp" />
+			</div> --%>
 			<div class="form-group">
 				<label for="thongTinLoai">Mô tả sản phẩm</label>
 				<form:input class="form-control" path="mota" />

@@ -3,8 +3,6 @@
  */
 package se.iuh.nhom21.Model;
 
-import java.math.BigDecimal;
-
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.lang.NonNull;
 
@@ -107,6 +105,10 @@ public class Cart {
 		this.soluong = 1;
 		this.dDongia = product.getDongia();
 		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public String toString() {
+		return "Cart [masp=" + masp + ", tensp=" + tensp + ", soluong=" + soluong + ", dDongia=" + dDongia + "]";
 	}
 	
 	

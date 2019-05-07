@@ -11,20 +11,15 @@
 	<!-- end header -->
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-6 text-left"><h3>Danh sách sản phẩm 
-				
-			</h3></div>
-			<div class="col-sm-6 text-right">
-				<a href="/nhom21/addproduct" class="btn btn-primary">Thêm sản phẩm mới</a>
-			</div>
+			<div class="col-sm-6 text-left"><h1 style="color:brown;">Danh sách sản phẩm 
+			</h1></div>
 		</div>
 			<div class="row">
 				<c:forEach var="product" items="${list}">
 				<div class="col-sm-3">
-					<h3>${product.tensp}</h3>
-					<img alt="" src="/nhom21/resources/theme1/img/sanpham/1.jpg">
+					<h3> Sản phẩm ${product.tensp}</h3>
+					<img alt="" src="/nhom21/resources/theme1/img/sanpham/${product.masp%10}.jpg">
 					<div>${product.dongia}</div>
-					<div>${product.anhsp}</div>
 					<div>${product.mota}</div>
 					<div>
 							<c:forEach var="type" items="${listtype}">

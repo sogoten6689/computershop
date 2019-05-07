@@ -3,7 +3,6 @@
  */
 package se.iuh.nhom21.Model;
 
-import java.math.BigDecimal;
 
 /**
  * @author LamNguyen
@@ -13,9 +12,17 @@ public class OrderDetail {
 	private int masp;
 	private int imadonhang;
 	private int soluongct;
-	private BigDecimal dongiact;
+	private float dongiact;
 	private String tensp_sp;
-	private BigDecimal congtien;
+	private float congtien;
+
+	
+	
+	@Override
+	public String toString() {
+		return "OrderDetail [masp=" + masp + ", imadonhang=" + imadonhang + ", soluongct=" + soluongct + ", dongiact="
+				+ dongiact + ", tensp_sp=" + tensp_sp + ", congtien=" + congtien + "]";
+	}
 	public int getMasp() {
 		return masp;
 	}
@@ -34,10 +41,10 @@ public class OrderDetail {
 	public void setSoluongct(int soluongct) {
 		this.soluongct = soluongct;
 	}
-	public BigDecimal getDongiact() {
+	public float getDongiact() {
 		return dongiact;
 	}
-	public void setDongiact(BigDecimal dongiact) {
+	public void setDongiact(float dongiact) {
 		this.dongiact = dongiact;
 	}
 	public String getTensp_sp() {
@@ -46,55 +53,11 @@ public class OrderDetail {
 	public void setTensp_sp(String tensp_sp) {
 		this.tensp_sp = tensp_sp;
 	}
-	public BigDecimal getCongtien() {
+	public float getCongtien() {
 		return congtien;
 	}
-	public void setCongtien(BigDecimal congtien) {
+	public void setCongtien(float congtien) {
 		this.congtien = congtien;
-	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((congtien == null) ? 0 : congtien.hashCode());
-		result = prime * result + ((dongiact == null) ? 0 : dongiact.hashCode());
-		result = prime * result + imadonhang;
-		result = prime * result + masp;
-		result = prime * result + soluongct;
-		result = prime * result + ((tensp_sp == null) ? 0 : tensp_sp.hashCode());
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		OrderDetail other = (OrderDetail) obj;
-		if (congtien == null) {
-			if (other.congtien != null)
-				return false;
-		} else if (!congtien.equals(other.congtien))
-			return false;
-		if (dongiact == null) {
-			if (other.dongiact != null)
-				return false;
-		} else if (!dongiact.equals(other.dongiact))
-			return false;
-		if (imadonhang != other.imadonhang)
-			return false;
-		if (masp != other.masp)
-			return false;
-		if (soluongct != other.soluongct)
-			return false;
-		if (tensp_sp == null) {
-			if (other.tensp_sp != null)
-				return false;
-		} else if (!tensp_sp.equals(other.tensp_sp))
-			return false;
-		return true;
 	}
 	/**
 	 * @param masp
@@ -104,8 +67,8 @@ public class OrderDetail {
 	 * @param tensp_sp
 	 * @param congtien
 	 */
-	public OrderDetail(int masp, int imadonhang, int soluongct, BigDecimal dongiact, String tensp_sp,
-			BigDecimal congtien) {
+	public OrderDetail(int masp, int imadonhang, int soluongct, float dongiact, String tensp_sp,
+			float congtien) {
 		super();
 		this.masp = masp;
 		this.imadonhang = imadonhang;
@@ -115,11 +78,33 @@ public class OrderDetail {
 		this.congtien = congtien;
 	}
 	/**
+	 * @param dongia 
+	 * @param soluong 
+	 * @param mahd 
+	 * @param masp2 
+	 * 
+	 */
+
+	/**
+	 * @param masp
+	 * @param imadonhang
+	 * @param soluongct
+	 * @param dongiact
+	 */
+	public OrderDetail(int masp, int imadonhang, int soluongct, float dongiact) {
+		super();
+		this.masp = masp;
+		this.imadonhang = imadonhang;
+		this.soluongct = soluongct;
+		this.dongiact = dongiact;
+	}
+	/**
 	 * 
 	 */
 	public OrderDetail() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	
 }

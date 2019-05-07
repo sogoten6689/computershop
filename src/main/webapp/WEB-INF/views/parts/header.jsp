@@ -11,26 +11,29 @@
 		<div>
 			<input type="text">
 			<button>Tìm kiếm</button>
-		</div>		
-		
+		</div>
+
 		<div class="dropdown">
 			<button class="btn dropdown-toggle" type="button"
-				data-toggle="dropdown" style="color:white;box-shadow: none;">
+				data-toggle="dropdown" style="color: white; box-shadow: none;">
 				Loại sản phẩm<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu">
 				<c:forEach items="${listtype}" var="type">
 					<li><a href="/nhom21/products/${type.maLoai}">${type.tenLoai}</a></li>
-				 </c:forEach>
+				</c:forEach>
 			</ul>
 		</div>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
 				<c:if test="${ not empty listcart}">
-					<li class="nav-item">
-					<a class="btn" href="#" style="font-size:20px;color:white;" >Giỏ<i class="fa fa-shopping-cart" style="font-size:20px;color:white;"> ${listcart.size()} </i></a>
-				</li>
+					<li class="nav-item"><a class="btn" href="/nhom21/carts"
+						style="font-size: 20px; color: white;">Giỏ<i
+							class="fa fa-shopping-cart"
+							style="font-size: 20px; color: white;"> ${countcart} </i></a></li>
 				</c:if>
+				
+					<li class="nav-item"><a class="nav-link" href="/nhom21/products">Tất cả sản phẩm</a></li>
 				<c:if test="${ empty sdt}">
 					<li class="nav-item"><a class="nav-link" href="/nhom21/login">Đăng
 							nhập</a></li>
@@ -38,18 +41,22 @@
 						href="/nhom21/register">Đăng kí</a></li>
 				</c:if>
 				<c:if test="${ sdt!=null }">
-					<li class="nav-item"><a class="nav-link" href="/nhom21/user/${sdt}">Hello
-							${sdt}</a></li>
+					
+					<li class="nav-item"><a class="nav-link"
+						href="/nhom21/oldmyorder/${sdt}"> - Đơn cũ</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="/nhom21/user/${sdt}">${user.ten }</a></li>
 					<li class="nav-item"><a class="nav-link" href="/nhom21/logout">Logout</a>
 					</li>
-					
+
 				</c:if>
 			</ul>
 		</div>
 	</div>
 </nav>
-	<c:if test="${quyen != null && quyen==1 }">
-		<jsp:include page="adminheader.jsp"/>
-	</c:if>
-	<br/>
+<c:if test="${quyen != null && quyen==1 }">
+	<jsp:include page="adminheader.jsp" />
+</c:if>
+<br />
+
 

@@ -7,8 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -29,7 +27,7 @@ public class ProductDao {
 		this.template = template;
 	}
 
-	public int save(Product product,HttpServletRequest request) {
+	public int save(Product product) {
 		String sql = "insert into SanPham(sTensp,dDongia,sAnhsp,sMota,spMaLoai,trangthai) " 
 				+ " values( N'" + product.getTensp() + "'," + product.getDongia()+ ",N'" 
 				+ product.getAnhsp() + "', N'"+ product.getMota()+ "',"

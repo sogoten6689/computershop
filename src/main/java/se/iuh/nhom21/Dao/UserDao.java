@@ -13,9 +13,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import se.iuh.nhom21.Model.Account;
-import se.iuh.nhom21.Model.Product;
-import se.iuh.nhom21.Model.Type;
 import se.iuh.nhom21.Model.User;
 
 

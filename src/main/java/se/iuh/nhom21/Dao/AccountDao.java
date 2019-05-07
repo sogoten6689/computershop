@@ -13,7 +13,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import se.iuh.nhom21.Model.Account;
-import se.iuh.nhom21.Model.Type;
 
 
 /**
@@ -33,7 +32,14 @@ public class AccountDao {
 		String sql ="insert into TaiKhoan(sSDT,sMatkhau,iMaquyen) "
 				+ " values( '"+account.getSdt()+"','"+account.getMatkhau()+"',2)";
 		System.out.println(account.toString());
-		return template.update(sql);
+		try{
+
+			return template.update(sql);
+		}
+		catch(Exception exception) {
+			return -10;
+		}
+		
 	}	
 	
 	public int delete(int id) {

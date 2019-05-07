@@ -13,7 +13,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import se.iuh.nhom21.Model.Account;
-import se.iuh.nhom21.Model.Type;
 
 
 

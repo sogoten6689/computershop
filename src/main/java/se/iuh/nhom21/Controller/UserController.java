@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import se.iuh.nhom21.Dao.UserDao;
-import se.iuh.nhom21.Model.Account;
 import se.iuh.nhom21.Model.User;
 
 

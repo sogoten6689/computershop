@@ -3,10 +3,8 @@
  */
 package se.iuh.nhom21.Controller;
 
-import java.io.File;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,8 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import se.iuh.nhom21.Dao.ProductDao;
@@ -47,8 +43,8 @@ public class ProductController {
 
 	// luu loai moi
 	@RequestMapping(value = "/saveproduct", method = RequestMethod.POST)
-	public ModelAndView save(@ModelAttribute("product") Product product, HttpServletRequest request) {
-		productDao.save(product,request);
+	public ModelAndView save(@ModelAttribute("product") Product product) {
+		productDao.save(product);
 		return new ModelAndView("redirect:/products");
 	}
 
