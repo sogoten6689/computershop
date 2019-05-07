@@ -5,6 +5,8 @@ package se.iuh.nhom21.Controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -41,7 +43,11 @@ public class TypeController {
 	
 	// danh sach loai san pham
 	@RequestMapping("/types")
-	public ModelAndView viewType() {
+	public ModelAndView viewType(HttpSession session) {
+		int quyen = (Integer) session.getAttribute("quyen");
+		if( quyen != 2) {
+			return new ModelAndView("home");
+		}
 		List<Type> list = typeDao.getTypes();
 		return new ModelAndView("type","list",list);
 	}

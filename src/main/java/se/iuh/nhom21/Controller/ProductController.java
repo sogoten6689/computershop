@@ -5,6 +5,7 @@ package se.iuh.nhom21.Controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,7 +51,8 @@ public class ProductController {
 
 	// danh sach san pham
 	@RequestMapping("/products")
-	public ModelAndView viewProduct() {
+	public ModelAndView viewProduct(HttpSession session) {
+		
 		List<Product> list = productDao.getProducts();
 		List<Type> listtype = typeDao.getTypes();
 		ModelAndView modelAndView = new ModelAndView("product");
@@ -72,7 +74,11 @@ public class ProductController {
 
 	// danh sach quan ly san pham
 	@RequestMapping("/quanlyproducts")
-	public ModelAndView viewProductQuanLy() {
+	public ModelAndView viewProductQuanLy(HttpSession session) {
+		int quyen = (Integer) session.getAttribute("quyen");
+		if( quyen != 2) {
+			return new ModelAndView("home");
+		}
 		List<Product> list = productDao.getProducts();
 		List<Type> listtype = typeDao.getTypes();
 		ModelAndView modelAndView = new ModelAndView("quanlyproduct");

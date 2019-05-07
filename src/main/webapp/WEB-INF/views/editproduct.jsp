@@ -3,7 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
-<title>account</title>
+<title>Computer shop</title>
 <jsp:include page="./parts/add_head.jsp" />
 </head>
 <body>

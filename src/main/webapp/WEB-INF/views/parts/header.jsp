@@ -1,7 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
+
+<c:if test="${quyen != null && quyen==2 }">
+	<jsp:include page="adminheader.jsp" />
+</c:if>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top fixhearder"
 	style="background-color: #343a40 !important;">
 	<div class="container">
 		<a class="navbar-brand" href="/nhom21"> <img
@@ -45,7 +50,7 @@
 					<li class="nav-item"><a class="nav-link"
 						href="/nhom21/oldmyorder/${sdt}"> - Đơn cũ</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="/nhom21/user/${sdt}">${user.ten }</a></li>
+						href="/nhom21/user/${sdt}">${ten }</a></li>
 					<li class="nav-item"><a class="nav-link" href="/nhom21/logout">Logout</a>
 					</li>
 
@@ -54,9 +59,7 @@
 		</div>
 	</div>
 </nav>
-<c:if test="${quyen != null && quyen==1 }">
-	<jsp:include page="adminheader.jsp" />
-</c:if>
+<br />
 <br />
 
 

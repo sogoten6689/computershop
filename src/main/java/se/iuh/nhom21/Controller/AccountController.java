@@ -5,6 +5,8 @@ package se.iuh.nhom21.Controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +26,11 @@ public class AccountController {
 	AccountDao AccountDAO;
 	
 	@RequestMapping("/accounts")
-	public ModelAndView viewAccount() {
+	public ModelAndView viewAccount(HttpSession session) {
+		int quyen = (Integer) session.getAttribute("quyen");
+		if( quyen != 2) {
+			return new ModelAndView("home");
+		}
 		List<Account> list = AccountDAO.getAccounts();
 		return new ModelAndView("account","list",list);
 	}

@@ -18,18 +18,19 @@
 		<table class="table table-striped text-center">
 			<tr>
 				<th>Mã đơn hàng </th>
-				<th>Tên sản phẩm</th>
-				<th>Số lượng</th>
-				<th>Đơn giá</th>
-				<th>Tổng tiền</th>
+				<th>Số điện thoại khách</th>
+				<th>Phương thức thanh toán</th>
+				<th>Địa chỉ</th>
+				<th>Thao tác</th>
 			</tr>
-			<c:forEach var="orderdetail" items="${listmyorder}">
+			<c:forEach var="order" items="${orders}">
 				<tr class="success">
-					<td>${orderdetail.imadonhang}</td>
-					<td>${orderdetail.tensp_sp}</td>
-					<td>${orderdetail.soluongct}</td>
-					<td>${orderdetail.dongiact}</td>
-					<td>${orderdetail.congtien}</td>
+					<td>${order.imadonhang}</td>
+					<td>${order.sSDT}</td>
+					<td>${order.sPtthanhtoan}</td>
+					<td>${order.sDiachiNhanhang}</td>
+					<td>
+						<a class="btn btn-primary" href="/nhom21/ordercheck/${order.imadonhang}">Xem</a></td>
 				</tr>
 			</c:forEach>
 		</table>

@@ -30,7 +30,7 @@ public class AccountDao {
 	
 	public int save(Account account) {
 		String sql ="insert into TaiKhoan(sSDT,sMatkhau,iMaquyen) "
-				+ " values( '"+account.getSdt()+"','"+account.getMatkhau()+"',2)";
+				+ " values( '"+account.getSdt()+"','"+account.getMatkhau()+"',1)";
 		System.out.println(account.toString());
 		try{
 

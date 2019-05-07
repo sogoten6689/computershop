@@ -23,7 +23,7 @@
 				<th>Đơn giá</th>
 				<th>Tổng tiền</th>
 			</tr>
-			<c:forEach var="orderdetail" items="${listmyorder}">
+			<c:forEach var="orderdetail" items="${ordercheck}">
 				<tr class="success">
 					<td>${orderdetail.imadonhang}</td>
 					<td>${orderdetail.tensp_sp}</td>

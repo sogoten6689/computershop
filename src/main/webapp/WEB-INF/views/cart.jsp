@@ -4,7 +4,7 @@
 <%@ page session="true"%>
 <html>
 <head>
-<title>Home</title>
+<title>Computer shop</title>
 <jsp:include page="./parts/add_head.jsp" />
 </head>
 <body>

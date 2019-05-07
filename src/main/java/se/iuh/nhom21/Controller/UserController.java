@@ -30,7 +30,11 @@ public class UserController {
 	UserDao userDAO;
 	
 	@RequestMapping("/users")
-	public ModelAndView viewuser() {
+	public ModelAndView viewuser(HttpSession session) {
+		int quyen = (Integer) session.getAttribute("quyen");
+		if( quyen != 2) {
+			return new ModelAndView("home");
+		}
 		List<User> list = userDAO.getUsers();
 		return new ModelAndView("user","list",list);
 	}

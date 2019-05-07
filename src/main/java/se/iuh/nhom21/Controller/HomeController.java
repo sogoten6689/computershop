@@ -150,6 +150,17 @@ public class HomeController {
 		session.setAttribute("listmyorder", listmyorder);
 		return order;
 	}
+	
+	// Xoa 1 sp khoi gio hang
+		@RequestMapping(value = "/ordercheck/{imadonhang}")
+		public ModelAndView ordercheck(@PathVariable int imadonhang, HttpSession session) {
+			List<OrderDetail> ordercheck = orderDao.getAllChitietByMadonhangne(imadonhang);
+			
+			ModelAndView order = new ModelAndView("ordercheck");
+			session.setAttribute("ordercheck", ordercheck);
+			return order;
+		}
+
 
 	@RequestMapping(value = "/cancelcart")
 	public ModelAndView cancellPurchase(HttpSession session) {
@@ -252,9 +263,10 @@ public class HomeController {
 			User user = userDao.getTypeBySdt(accountResult.getSdt().trim());
 			session.setAttribute("sdt", accountResult.getSdt());
 			session.setAttribute("quyen", accountResult.getQuyen());
+			session.setAttribute("ten", user.getTen());
 			session.setAttribute("user", user);
 //			return new ModelAndView("logout","msg","Đăng xuất thành công!");
-			return new ModelAndView("redirect:/","msg","Đăng xuất thành công!");
+			return new ModelAndView("redirect:/");
 		} else {
 			return new ModelAndView("redirect:/login");
 		}
@@ -271,13 +283,23 @@ public class HomeController {
 	@RequestMapping(value = "/carts", method = RequestMethod.GET)
 	public ModelAndView showcarts(HttpServletRequest request, HttpSession session) {
 		ModelAndView viewcarts = new ModelAndView("cart");
-		@SuppressWarnings("unchecked")
-		List<Cart> listcart = (List<Cart>) session.getAttribute("listcart");
-		if (listcart == null) {
-			return viewcarts;
-		}
 		return viewcarts;
 	}
+	
+	// quan ly
+		@RequestMapping(value = "/orders", method = RequestMethod.GET)
+		public ModelAndView showorder(HttpServletRequest request, HttpSession session) {
+			ModelAndView viewcarts = new ModelAndView("cart");
+			int quyen = (Integer) session.getAttribute("quyen");
+			if( quyen != 2) {
+				return new ModelAndView("home");
+			}
+			List<Order> orders  = orderDao.getAllDonhang();
+//			List<OrderDetail> listmyorder = orderDao.getAllChitietByMadonhang();
+			ModelAndView order = new ModelAndView("quanlydonhang");
+			session.setAttribute("orders", orders);
+			return order;
+		}
 
 	public static int countCart(List<Cart> listcart) {
 		int count = 0;
